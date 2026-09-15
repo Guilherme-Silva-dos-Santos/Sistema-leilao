@@ -7,7 +7,7 @@ com o objetivo de informatizar e auxiliar no gerenciamento de suas rotinas.
 
 ## ⚙️Tecnologias Usadas
 
--Java
--MySQL
--Git
--GitHub
+- Java
+- MySQL
+- Git
+- GitHub
