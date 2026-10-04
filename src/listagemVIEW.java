@@ -18,6 +18,8 @@ public class listagemVIEW extends javax.swing.JFrame {
      */
     public listagemVIEW() {
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+        model.setRowCount(0);
         listarProdutos();
     }
 
@@ -219,6 +221,7 @@ public class listagemVIEW extends javax.swing.JFrame {
                 });
             }
         } catch (Exception e) {
+            System.out.println("Erro ao atualizar listagem: " + e.getMessage());
         }
     
     }
