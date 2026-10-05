@@ -23,10 +23,21 @@ public class ProdutoDAOTest {
         }
 
         ProdutosDTO salvo = produtos.get(0);
-        if (!"Notebook Gamer".equals(salvo.getNome()) || !salvo.getStatus().equals("A Venda")) {
+        if (!"Notebook Gamer".equals(salvo.getNome()) || !"A Venda".equals(salvo.getStatus())) {
             throw new RuntimeException("Teste falhou: os dados do produto não foram persistidos corretamente.");
         }
 
-        System.out.println("TESTE_OK -> produtos persistidos: " + produtos.size());
+        dao.venderProduto(salvo.getId());
+        ArrayList<ProdutosDTO> vendidos = dao.listarProdutosVendidos();
+        if (vendidos.size() != 1) {
+            throw new RuntimeException("Teste falhou: o produto vendido não foi listado como vendido.");
+        }
+
+        ProdutosDTO vendido = vendidos.get(0);
+        if (!"Vendido".equals(vendido.getStatus())) {
+            throw new RuntimeException("Teste falhou: o status do produto não foi atualizado para Vendido.");
+        }
+
+        System.out.println("TESTE_OK -> produtos persistidos e vendidos: " + vendidos.size());
     }
 }
